@@ -1,0 +1,197 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Abbrivio — Gommone Experience Design System */
+
+@layer base {
+  :root {
+    /* Abbrivio Brand Colors */
+    --abbrivio-orange: 35 100% 50%; /* #ff9500 */
+    --abbrivio-ink: 213 78% 11%; /* #0b1a2b */
+    --abbrivio-bg: 202 100% 97%; /* #f7fbff */
+    --abbrivio-navy: 218 72% 12%; /* #071b2e */
+    --abbrivio-light-blue: 202 87% 85%; /* #cfe7ff */
+    --abbrivio-border: 206 47% 92%; /* #eef4fa */
+
+    /* Semantic tokens */
+    --background: var(--abbrivio-bg);
+    --foreground: var(--abbrivio-ink);
+
+    --card: 0 0% 100%;
+    --card-foreground: var(--abbrivio-ink);
+
+    --popover: 0 0% 100%;
+    --popover-foreground: var(--abbrivio-ink);
+
+    --primary: var(--abbrivio-orange);
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 206 47% 96%;
+    --secondary-foreground: var(--abbrivio-ink);
+
+    --muted: 206 47% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: var(--abbrivio-orange);
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: hsl(var(--abbrivio-border));
+    --input: hsl(var(--abbrivio-border));
+    --ring: var(--abbrivio-orange);
+
+    --radius: 0.75rem;
+
+    /* Hero section */
+    --hero-gradient: linear-gradient(90deg, 
+      hsl(var(--abbrivio-navy) / 0.9), 
+      hsl(var(--abbrivio-navy) / 0.2));
+    
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-hero: transform 8s ease;
+  }
+
+  .dark {
+    --abbrivio-bg: var(--abbrivio-navy);
+    --abbrivio-ink: var(--abbrivio-light-blue);
+    
+    --background: var(--abbrivio-navy);
+    --foreground: var(--abbrivio-light-blue);
+
+    --card: var(--abbrivio-navy);
+    --card-foreground: var(--abbrivio-light-blue);
+
+    --popover: var(--abbrivio-navy);
+    --popover-foreground: var(--abbrivio-light-blue);
+
+    --primary: var(--abbrivio-orange);
+    --primary-foreground: var(--abbrivio-navy);
+
+    --secondary: 218 72% 20%;
+    --secondary-foreground: var(--abbrivio-light-blue);
+
+    --muted: 218 72% 20%;
+    --muted-foreground: 202 60% 70%;
+
+    --accent: var(--abbrivio-orange);
+    --accent-foreground: var(--abbrivio-navy);
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 218 72% 20%;
+    --input: 218 72% 20%;
+    --ring: var(--abbrivio-orange);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    box-sizing: border-box;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    line-height: 1.4; /* More compact line height */
+  }
+}
+
+@layer components {
+  /* Premium Scroll Reveal Animations - Slower & Center Origin */
+  .scroll-reveal-card {
+    opacity: 0;
+    transform: scale(0.85) translateY(40px);
+    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+
+  .scroll-reveal-card.is-visible {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+
+  .scroll-reveal-left {
+    opacity: 0;
+    transform: translate3d(100px, 0, 0) scale(0.92);
+    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+
+  .scroll-reveal-left.is-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  .scroll-reveal-right {
+    opacity: 0;
+    transform: translate3d(-100px, 0, 0) scale(0.92);
+    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+
+  .scroll-reveal-right.is-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  .scroll-reveal-scale {
+    opacity: 0;
+    transform: scale(0.75);
+    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+
+  .scroll-reveal-scale.is-visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* Hero section styles */
+  .hero-bg-video {
+    @apply absolute inset-0 w-full h-full object-cover;
+    filter: brightness(0.8);
+  }
+  
+  .hero-bg-image {
+    @apply absolute top-0 w-3/5 h-full object-cover;
+    filter: brightness(0.8);
+    transition: var(--transition-hero);
+  }
+  
+  .hero-bg-image:nth-child(1) {
+    @apply left-0;
+  }
+  
+  .hero-bg-image:nth-child(2) {
+    @apply right-0;
+  }
+  
+  .hero-overlay {
+    @apply absolute inset-0;
+    background: linear-gradient(90deg, 
+      hsl(var(--abbrivio-navy) / 0.4), 
+      hsl(var(--abbrivio-navy) / 0.1));
+  }
+
+  /* Animation classes */
+  .parallax-scale {
+    transform: scale(1.05);
+  }
+
+  @media (max-width: 700px) {
+    .hero-bg-image {
+      @apply w-full;
+    }
+  }
+}
