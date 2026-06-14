@@ -15,6 +15,7 @@ import Blog from "./pages/Blog";
 import NotFound from "./pages/NotFound";
 import CookiePolicy from "./pages/CookiePolicy";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import LandingPonza from "./pages/LandingPonza"; 
 
 // Article imports
 import CinqueMotiviTerapia from "./pages/articles/CinqueMotiviTerapia";
@@ -53,6 +54,9 @@ const App = () => (
           <Route path="/faq" element={<FAQ />} />
           <Route path="/cookie-policy" element={<CookiePolicy />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+           
+          {/* Landing Page per le campagne Ads */}
+          <Route path="/escursione-ponza" element={<LandingPonza />} />
           
           {/* Blog Articles */}
           <Route path="/blog/5-motivi-gommone-terapia" element={<CinqueMotiviTerapia />} />
